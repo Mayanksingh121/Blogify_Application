@@ -8,7 +8,11 @@ const imagesOBJ = {
     successGif: require("./images/success.gif"),
     errorGif: require("./images/error.gif"),
     maleAvatar: require("./images/maleAvatar.png"),
-    femaleAvatar: require("./images/femaleAvatar.png")
+    femaleAvatar: require("./images/femaleAvatar.png"),
+    prohibited: require("./images/prohibited.png"),
+    protection: require("./images/protection.png"),
+    lock: require("./images/lock.png"),
+    thunder: require("./images/thunder.png")
 }
 
 
