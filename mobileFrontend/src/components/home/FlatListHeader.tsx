@@ -1,4 +1,10 @@
-import {Dimensions, Image, StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import Icon from '@react-native-vector-icons/ionicons';
 import imagesOBJ from '../../assets/images';
@@ -7,58 +13,53 @@ import {fontOBJ} from '../../assets/fonts';
 import QuizCard from './QuizCard';
 import AboutCard from './AboutCard';
 import {AboutCardData} from '../../utils/constants';
-import {AboutCardItem} from '../../types/homeScreen.types';
+import {IAboutCardItem} from '../../types/homeScreen.types';
 
-const {height, width} = Dimensions.get('window');
-const {Montserrat,Lato} = fontOBJ;
+const {Montserrat, Lato} = fontOBJ;
+
 const FlatListHeader = () => {
   return (
     <View style={styles.parentContainer}>
-      <View style={styles.topContainer}>
-        <TouchableOpacity style={styles.inputBoxContainer}>
-          <Icon name="search-outline" size={20} />
-          <Text style={styles.textInput}>Search article...</Text>
-        </TouchableOpacity>
-        <Image
-          resizeMode="contain"
-          style={styles.notificationImage}
-          source={imagesOBJ.appleImage}
-        />
+      <View style={styles.headerContainer}>
+        <View style={styles.topContainer}>
+          <View>
+            <Text style={styles.brandText}>Blogify</Text>
+          </View>
+          <TouchableOpacity style={styles.profileContainer}>
+            <Image
+              resizeMode="cover"
+              style={styles.profileImage}
+              source={imagesOBJ.appleImage}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.searchContainer}>
+          <TouchableOpacity style={styles.inputBoxContainer}>
+            <Icon name="search" size={20} color="#64748b" />
+            <Text style={styles.textInput}>Search articles, topics...</Text>
+              <Icon name="options" size={18} color="#0ea5e9" />
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.featureContainer}>
-        <Text style={{fontFamily: Montserrat.bold, fontSize: height*0.023}}>Featured Blogs</Text>
         <FeaturingCard />
       </View>
-      <Text
-        style={{
-          fontFamily: Montserrat.bold,
-          textAlign: 'center',
-          fontSize: height * 0.021,
-        }}>
-        Why Choose Blogify?
-      </Text>
-      <Text
-        style={{
-          textAlign: 'center',
-          fontFamily: Montserrat.medium,
-          fontSize: height * 0.015,
-          color: '#555',
-        }}>
-        Discover what makes us the top choice for content creators everywhere.
-      </Text>
-      <View
-        style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          paddingHorizontal: 14,
-          paddingVertical: 14,
-          gap: 8,
-        }}>
-        {AboutCardData.map((item: AboutCardItem, index) => {
-          return <AboutCard key={index} cardData={item} />;
-        })}
+      <View style={styles.benefitsSection}>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Why Choose Blogify?</Text>
+          <Text style={styles.sectionSubtitle}>
+            Everything you need for an amazing blogging experience
+          </Text>
+        </View>     
+        <View style={styles.aboutCardsContainer}>
+          {AboutCardData.map((item: IAboutCardItem, index) => {
+            return <AboutCard key={index} cardData={item} />;
+          })}
+        </View>
       </View>
-      <QuizCard/>
+
+      <QuizCard />
     </View>
   );
 };
@@ -68,45 +69,101 @@ export default FlatListHeader;
 const styles = StyleSheet.create({
   parentContainer: {
     flex: 1,
-    backgroundColor: '#f9fafb',
+    backgroundColor: '#fafbfc',
+  },
+  headerContainer: {
+    backgroundColor: '#ffffff',
+    paddingBottom: 20,
   },
   topContainer: {
-    backgroundColor: '#ffffff',
-    paddingVertical: height * 0.018,
-    width: '100%',
-    elevation: 1,
-    display: 'flex',
+    paddingTop: 20,
+    paddingHorizontal: 20,
     flexDirection: 'row',
-    paddingHorizontal: width * 0.04,
     justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
   },
-  notificationImage: {
-    height: height * 0.05,
-    width: height * 0.05,
+  brandText: {
+    fontFamily: Montserrat.bold,
+    fontSize: 30,
+    color: '#0f172a',
+  },
+  brandSubtext: {
+    fontFamily: Montserrat.medium,
+    fontSize: 14,
+    color: '#64748b',
+  },
+  profileContainer: {
+    position: 'relative',
+  },
+  profileImage: {
+    height: 44,
+    width: 44,
+    borderRadius: 22,
+    borderWidth: 3,
+    borderColor: '#e2e8f0',
+  },
+  onlineIndicator: {
+    position: 'absolute',
+    bottom: 2,
+    right: 2,
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: '#22c55e',
+    borderWidth: 2,
+    borderColor: '#ffffff',
+  },
+  searchContainer: {
+    paddingHorizontal: 20,
   },
   inputBoxContainer: {
-    width: '84%',
-    backgroundColor: '#f3f4f6',
-    display: 'flex',
+    backgroundColor: '#f8fafc',
     flexDirection: 'row',
-    paddingHorizontal: 15,
-    justifyContent: 'center',
     alignItems: 'center',
-    gap: 10,
-    borderRadius: 40,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    borderRadius: 12,
+    gap: 12,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
   },
   textInput: {
-    width: '95%',
-    paddingVertical: height * 0.015,
-    fontFamily: Montserrat.semiBold,
-    color: 'black',
-    justifyContent: 'center'
+    flex: 1,
+    fontFamily: Montserrat.medium,
+    color: '#64748b',
+    fontSize: 15,
+  },
+  filterButton: {
+    padding: 4,
   },
   featureContainer: {
-    flex: 1,
-    paddingTop: 20,
-    paddingBottom: 30,
+    paddingVertical: 16
+  },
+  benefitsSection: {
     paddingHorizontal: 14,
+    marginVertical: 25,
+  },
+  sectionHeader: {
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  sectionTitle: {
+    fontFamily: Montserrat.bold,
+    fontSize: 20,
+    color: '#0f172a',
+  },
+  sectionSubtitle: {
+    textAlign: 'center',
+    fontFamily: Montserrat.medium,
+    fontSize: 16,
+    color: '#64748b',
+    lineHeight: 24,
+  },
+  aboutCardsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 10,
+    justifyContent: 'center'
   },
 });

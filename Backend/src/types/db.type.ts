@@ -22,5 +22,17 @@ export interface IBlog{
   category: string;
   content: string;
   images: string[];
-  author: any
+  author: any;
+  views: string;
+  likesCount: string
+}
+
+
+export interface ILikes{
+  blogId: mongoose.Schema.Types.ObjectId;
+  userId: mongoose.Schema.Types.ObjectId;
+}
+export interface IViews{
+  blogId: mongoose.Schema.Types.ObjectId;
+  viewerId: mongoose.Schema.Types.ObjectId;
 }

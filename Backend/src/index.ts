@@ -2,9 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import mainRouter from "./routes/main.route";
 import { dbConnect } from "./db/dbConnection";
+import { createServer } from 'https';
 import { connectRedis } from "./db/redisConnection";
+import { establishWebSocketConnection } from "./websocket";
 
-const server = express();
+const app = express();
+const server = createServer(app);
+establishWebSocketConnection(server);
 dotenv.config();
 
 
@@ -12,9 +16,9 @@ const startServer = async()=>{
     try{
         await dbConnect();
         await connectRedis();
-        server.use(express.json());
-        server.use("/apiv1",mainRouter);
-        server.listen(process.env.PORT, ()=>{
+        app.use(express.json());
+        app.use("/apiv1",mainRouter);
+        app.listen(process.env.PORT, ()=>{
             console.log("Server is listing on port ", process.env.PORT);
         })
     }catch(e: unknown){

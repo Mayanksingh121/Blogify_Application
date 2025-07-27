@@ -19,3 +19,26 @@ export const getBlogsList = async(req:Request, res:Response)=>{
         res.status(500).json({message: "Internal Server Error"});
     }
 }
+
+
+export const blogViewed = async(req:Request, res:Response)=>{
+    try{
+        const userId = req.body.userId;
+        const blogId = req.body.blogId;
+
+        
+
+    }catch(e){
+        console.log("@error at blog view endpoint");
+        res.status(500).json({message: "Internal Server Error"});
+    }
+}
+
+export const blogLiked = async(req:Request, res:Response)=>{
+    try{
+
+    }catch(e){
+        console.log("@error at blog like endpoint");
+        res.status(500).json({message: "Internal Server Error"});
+    }
+}

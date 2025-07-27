@@ -1,7 +1,7 @@
 import { colors } from "react-native-swiper-flatlist/src/themes";
 import { Document , Heart, Views} from "./svgImages";
 import imagesOBJ from "../assets/images";
-import { AboutCardItem } from "../types/homeScreen.types";
+import { IAboutCardItem } from "../types/homeScreen.types";
 
 export const textInputsForCreateProfile = [
   {
@@ -82,7 +82,7 @@ export const DASHBOARD_ICONS : any= {
   }
 }
 
-export const AboutCardData: AboutCardItem[] = [
+export const AboutCardData: IAboutCardItem[] = [
   {
     image: imagesOBJ.protection,
     color: "#7B61FF",
@@ -118,3 +118,6 @@ export const AboutCardData: AboutCardItem[] = [
 ];
 
 
+export const BlogTypes = [
+  "All", "Sports", "Short Reads", "Technology", "Nature"
+]

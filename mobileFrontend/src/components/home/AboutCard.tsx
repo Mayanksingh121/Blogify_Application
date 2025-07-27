@@ -1,13 +1,13 @@
 import { Dimensions, Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { AboutCardItem } from '../../types/homeScreen.types'
+import { IAboutCardItem } from '../../types/homeScreen.types'
 import { fontOBJ } from '../../assets/fonts';
 
-const {width,height} = Dimensions.get("window");
+const {width} = Dimensions.get("screen");
 const {Montserrat} = fontOBJ;
-const AboutCard = ({cardData}: {cardData: AboutCardItem}) => {
+const AboutCard = ({cardData}: {cardData: IAboutCardItem}) => {
   return (
-    <View style={{backgroundColor: cardData.backgroundColor, width: width*0.5-18, alignItems: 'center', gap:8,paddingHorizontal: 14, paddingVertical: 10}}>
+    <View style={{backgroundColor:'white', elevation:1,width: (width*0.5)-20, alignItems: 'center', gap:8,paddingHorizontal: 14, paddingVertical: 10}}>
      <View style={{padding: 10, borderRadius: 100, backgroundColor: cardData.circleColor, overflow: 'hidden'}}>
         <Image style={{width: 30, height: 30, tintColor: cardData.color}} source={cardData.image}/>
      </View>
