@@ -27,11 +27,11 @@ const blogSchema = new mongoose.Schema<IBlog>(
       required: true,
     },
     views: {
-      type: String,
+      type: Number,
       required: false,
     },
     likesCount: {
-      type: String,
+      type: Number,
       required: false,
     },
   },

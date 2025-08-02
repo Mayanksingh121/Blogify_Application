@@ -23,8 +23,8 @@ export interface IBlog{
   content: string;
   images: string[];
   author: any;
-  views: string;
-  likesCount: string
+  views: number;
+  likesCount: number;
 }
 
 

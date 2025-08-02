@@ -1,5 +1,4 @@
 import {
-  Dimensions,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -10,14 +9,13 @@ import {fontOBJ} from '../../assets/fonts';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from '@react-native-vector-icons/ionicons';
 
-const {Montserrat, Lato} = fontOBJ;
-const {height, width} = Dimensions.get('window');
+const {Montserrat} = fontOBJ;
 
 const QuizCard = () => {
   return (
     <View style={styles.wrapper}>
       <LinearGradient
-        colors={['#1f1f1f', '#2a2a2a', '#1a1a1a']}
+        colors={['#31b4fc', '#2591d1', '#1a79b2']}
         start={{x: 0, y: 0}}
         end={{x: 1, y: 1}}
         style={styles.parentContainer}>
@@ -62,14 +60,14 @@ export default QuizCard;
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingHorizontal: 14,
     marginBottom: 24,
+    paddingVertical: 16,
   },
   parentContainer: {
-    borderRadius: 10,
+    borderRadius: 8,
     overflow: 'hidden',
     position: 'relative',
-    elevation: 8,
+    elevation: 3,
     shadowColor: '#000000',
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.3,
@@ -123,11 +121,11 @@ const styles = StyleSheet.create({
     borderRadius: 1,
   },
   innerContainer: {
-    padding: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 12,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    minHeight: 80,
   },
   contentSection: {
     flex: 1,
@@ -172,8 +170,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 14,
-    paddingHorizontal: 20,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
     borderRadius: 28,
     minWidth: 120,
     justifyContent: 'center',
@@ -183,6 +181,5 @@ const styles = StyleSheet.create({
     color: '#1f1f1f',
     fontSize: 14,
     marginRight: 8,
-    letterSpacing: 0.3,
-  },
+  }
 });

@@ -48,7 +48,6 @@ export default FlatListFilter;
 const styles = StyleSheet.create({
   parentComponent: {
     paddingHorizontal: 14,
-    paddingTop: 20,
     gap: 14,
   },
   heading: {
