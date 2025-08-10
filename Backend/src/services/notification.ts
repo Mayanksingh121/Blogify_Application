@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { NotificationModel } from "../db/models/notifications.model";
 
-export class Notification {
+export class NotificationService {
   message;
   userID;
   status;
@@ -16,7 +16,8 @@ export class Notification {
   ) {
     this.message = message;
     this.userID = userID;
-    (this.status = "UNREAD"), (this.authorID = authorID);
+    this.status = "UNREAD";
+    this.authorID = authorID;
     this.blogID = blogID;
   }
 
@@ -35,5 +36,4 @@ export class Notification {
         return null;
     }
   }
-
 }

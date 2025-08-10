@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
 import { ViewsModel } from "../db/models/views.model";
 import { BlogModel } from "../db/models/blog.model";
-import { User } from "../db/models/user.model";
 import { LikesModel } from "../db/models/likes.model";
+import { NotificationModel } from "../db/models/notifications.model";
+import { NotificationService } from "../services/notification";
+import { User } from "../db/models/user.model";
 
 export const trendingBlog = async (req: Request, res: Response) => {
   try {
@@ -68,55 +70,41 @@ export const blogViewed = async (req: Request, res: Response) => {
 export const blogLiked = async (req: Request, res: Response) => {
   try {
     const { userId, blogId } = req.body;
+
     if (!userId || !blogId) {
-      res.status(400).json({ message: "Missing userId or blogId" });
-      return;
+      return res.status(400).json({ message: "Missing userId or blogId" });
     }
 
-    const existingLike = await LikesModel.findOne({
-      $and: [{ blogId: blogId, userId: userId }],
-    });
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User doesn't exist" });
+    }
+
+    const blog = await BlogModel.findById(blogId);
+    if (!blog) {
+      return res.status(404).json({ message: "Blog not found" });
+    }
+
+    const existingLike = await LikesModel.findOne({ blogId, userId });
 
     if (existingLike) {
-      await BlogModel.findOneAndUpdate(
-        {
-          _id: blogId,
-        },
-        {
-          $inc: { likesCount: -1 },
-        },{
-          new: false
-        }
-      );
+      await LikesModel.deleteOne({ blogId, userId });
+      await BlogModel.findByIdAndUpdate(blogId, { $inc: { likesCount: -1 } });
+      await NotificationModel.deleteOne({ blogID: blogId, userID: userId });
 
-      await BlogModel.deleteOne({
-        $and: [{ blogId: blogId, userId: userId }],
-      });
-
-
-      // here create logic for deleting notification
-      res.status(200).json({ message: "Blog unliked" });
-      return;
+      return res.status(200).json({ message: "Blog unliked" });
     }
 
+    await LikesModel.create({ blogId, userId });
+    const likedBlogData = await BlogModel.findByIdAndUpdate(blogId, { $inc: { likesCount: 1 } });
+    const message = `${user.name} liked your blog ${likedBlogData?.title}`;
+    const notification = new NotificationService(message, userId, blog.author, blogId);
+    await notification.storeNotificationInDb();
 
-    await LikesModel.create({
-      blogId: blogId,
-      userId: userId
-    });
-
-    await BlogModel.findOneAndUpdate(
-      {
-        _id: blogId,
-      },
-      {
-        $inc: { views: 1 },
-      }
-    );
-
+    res.status(200).json({ message: "Like added successfully" });
   } catch (e) {
-    console.log("@error at blog like endpoint");
-    res.status(500).json({ message: "Internal Server Error" });
+    console.error("@error at blog like endpoint", e);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
