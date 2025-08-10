@@ -1,5 +1,4 @@
 import {
-  Image,
   StyleSheet,
   Text,
   View,
@@ -8,13 +7,9 @@ import {
 } from 'react-native';
 import React from 'react';
 import Icon from '@react-native-vector-icons/ionicons';
-import imagesOBJ from '../../assets/images';
 import FeaturingCard from './FeaturingCard';
 import {fontOBJ} from '../../assets/fonts';
 import QuizCard from './QuizCard';
-import AboutCard from './AboutCard';
-import {AboutCardData} from '../../utils/constants';
-import {IAboutCardItem} from '../../types/homeScreen.types';
 import PopularTags from './PopularTags';
 
 const {Montserrat, Lato} = fontOBJ;
@@ -73,8 +68,6 @@ export default FlatListHeader;
 
 const styles = StyleSheet.create({
   parentContainer: {
-    flex: 1,
-    backgroundColor: '#ffffff',
     paddingHorizontal: 16,
   },
   headerContainer: {
@@ -107,37 +100,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderBottomColor: '#dcdcdc',
   },
-  brandText: {
-    fontFamily: Montserrat.bold,
-    fontSize: 30,
-    color: '#0f172a',
-  },
-  brandSubtext: {
-    fontFamily: Montserrat.medium,
-    fontSize: 14,
-    color: '#64748b',
-  },
-  profileContainer: {
-    position: 'relative',
-  },
-  profileImage: {
-    height: 44,
-    width: 44,
-    borderRadius: 22,
-    borderWidth: 3,
-    borderColor: '#e2e8f0',
-  },
-  onlineIndicator: {
-    position: 'absolute',
-    bottom: 2,
-    right: 2,
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    backgroundColor: '#22c55e',
-    borderWidth: 2,
-    borderColor: '#ffffff',
-  },
   inputBoxContainer: {
     backgroundColor: '#f8fafc',
     flexDirection: 'row',
@@ -146,7 +108,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 12,
     gap: 12,
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: '#e2e8f0',
   },
   textInput: {
@@ -155,38 +117,9 @@ const styles = StyleSheet.create({
     color: '#64748b',
     fontSize: 15,
   },
-  filterButton: {
-    padding: 4,
-  },
   featureContainer: {
     paddingVertical: 16,
     borderBottomWidth: 0.5,
     borderBottomColor: '#dcdcdc',
-  },
-  benefitsSection: {
-    paddingHorizontal: 14,
-    marginVertical: 25,
-  },
-  sectionHeader: {
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  sectionTitle: {
-    fontFamily: Montserrat.bold,
-    fontSize: 20,
-    color: '#0f172a',
-  },
-  sectionSubtitle: {
-    textAlign: 'center',
-    fontFamily: Montserrat.medium,
-    fontSize: 16,
-    color: '#64748b',
-    lineHeight: 24,
-  },
-  aboutCardsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 10,
-    justifyContent: 'center',
   },
 });

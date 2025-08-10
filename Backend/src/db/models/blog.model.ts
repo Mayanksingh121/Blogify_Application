@@ -6,12 +6,12 @@ const blogSchema = new mongoose.Schema<IBlog>(
     title: {
       type: String,
       required: true,
-      index: 1
+      index: true
     },
     category: {
       type: String,
       required: true,
-      index: 1
+      index: true
     },
     content: {
       type: String,

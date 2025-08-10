@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet} from 'react-native'
+import { StyleSheet, View} from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AccountStackNavigation from './AccountStackNavigation';
 import NotificationStackNavigatior from './NotificationStackNavigatior';
@@ -11,10 +11,19 @@ import Dashboard from '../screens/dashboard/Dashboard';
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigation = () => {
+  const TabIcon = ({size,focused,color,iconName}: {size: number, focused: boolean, color: string, iconName: any})=>{
+    return(
+      focused? <View style={{height: "100%",width: '100%',borderColor: '#31b4fc', borderTopWidth: 2}}>
+        <Icon style={{alignSelf: 'center', justifyContent: 'center', alignItems: 'center'}} name={iconName} color={color} size={size}/>
+      </View>:
+      <Icon name={iconName} color={color} size={size}/>
+    )
+  }
   return (
     <Tab.Navigator initialRouteName='Home' screenOptions={({route})=>({
       headerShown: false,
-      tabBarIcon: ({color, size})=>{
+      tabBarIcon: ({color, focused})=>{
+        const size = focused? 20: 18;
         let iconName: any = "refresh";
         if (route.name === 'Home') {
           iconName = "home-sharp"
@@ -23,11 +32,11 @@ const BottomTabNavigation = () => {
         }else{
           iconName="person"
         }
-        return <Icon name={iconName} color={color} size={size}></Icon>
+        return <TabIcon size={size} focused={focused} color={color} iconName={iconName}/>
       },
-      tabBarActiveTintColor: 'black',
-      tabBarInactiveTintColor: '#D3D3D3',
-      
+      tabBarStyle: {backgroundColor: '#f2f2f2'},
+      tabBarActiveTintColor: '#31b4fc',
+      tabBarInactiveTintColor: '#828282',
     })}>
         <Tab.Screen name="Home" component={HomeStackNavigator}/>
         <Tab.Screen name="Dashboard" component={Dashboard}/>

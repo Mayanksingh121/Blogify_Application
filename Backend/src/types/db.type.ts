@@ -8,7 +8,7 @@ export interface IUser{
     password: string;
     gender: string;
     profileUrl: string;
-    phoneNumber: number
+    phoneNumber: number;
 }
 
 export interface IOTP{
@@ -35,4 +35,13 @@ export interface ILikes{
 export interface IViews{
   blogId: mongoose.Schema.Types.ObjectId;
   viewerId: mongoose.Schema.Types.ObjectId;
+}
+
+
+export interface INotification{
+  authorID: mongoose.Schema.Types.ObjectId,
+  blogID: mongoose.Schema.Types.ObjectId,
+  userID: mongoose.Schema.Types.ObjectId,
+  message: string;
+  status: "UNREAD" | "READ";
 }

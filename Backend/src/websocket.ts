@@ -1,5 +1,5 @@
 import { Server } from "http";
-import { WebSocketServer } from "ws";
+import { WebSocket, WebSocketServer } from "ws";
 
 export const establishWebSocketConnection = (server: Server)=>{
     try{
@@ -11,3 +11,4 @@ export const establishWebSocketConnection = (server: Server)=>{
         console.log("Error while making websocket connection ", e);
     }
 }
+

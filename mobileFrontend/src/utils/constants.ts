@@ -1,4 +1,3 @@
-import { colors } from "react-native-swiper-flatlist/src/themes";
 import { Document , Heart, Views} from "./svgImages";
 import imagesOBJ from "../assets/images";
 import { IAboutCardItem } from "../types/homeScreen.types";

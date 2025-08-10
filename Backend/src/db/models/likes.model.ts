@@ -5,7 +5,7 @@ const likesSchmea = new Schema<ILikes>({
     blogId: {
         type: Schema.Types.ObjectId,
         ref: "Blog",
-        required: true
+        required: true,
     },
     userId: {
         type: Schema.Types.ObjectId,

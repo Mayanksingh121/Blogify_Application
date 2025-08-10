@@ -60,7 +60,6 @@ export default QuizCard;
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginBottom: 24,
     paddingVertical: 16,
   },
   parentContainer: {

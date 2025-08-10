@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0B6F1DC7B463442BA01F25F8 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2150AC82F510451FBE6EBD80 /* OpenSans-Bold.ttf */; };
 		0C3BCF0058754F9BBDDE936E /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29E8081FB9B548CB920C1B4F /* OpenSans-SemiBold.ttf */; };
-		0C80B921A6F3F58F76C31292 /* libPods-mobileFrontend.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-mobileFrontend.a */; };
 		1016D139D2C84E7CA9E04632 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1EA48386C6B429897435152 /* Lato-Bold.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		18282717FC63F942D5985C35 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
@@ -23,6 +22,7 @@
 		89CEDA77B12B4D4E8FFABE74 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52108E229A4C483285E1D978 /* OpenSans-ExtraBold.ttf */; };
 		BDC6851B7C604F8782A12D10 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81F139BE20634551BA1FBA3F /* OpenSans-Regular.ttf */; };
 		BE46FFFE04B7433A8E1706A9 /* OpenSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A95BA12641A41D19D287819 /* OpenSans-Medium.ttf */; };
+		CF6F0B194F79182DB8839F4B /* Pods_mobileFrontend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81FAA6C1D5C2F7A202815AD /* Pods_mobileFrontend.framework */; };
 		FA26DB2C08F649D8B398B750 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3555D7DAA9E4A7FA1193EBA /* Montserrat-Bold.ttf */; };
 		FBD810AAFB3941DA9BC3719B /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08EBCD89B0DE46F09EFED04E /* Lato-Thin.ttf */; };
 		FD9519C1440B4295A09450F4 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E12874280B4A4FF4833EB7D3 /* Montserrat-Medium.ttf */; };
@@ -43,7 +43,6 @@
 		5709B34CF0A7D63546082F79 /* Pods-mobileFrontend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileFrontend.release.xcconfig"; path = "Target Support Files/Pods-mobileFrontend/Pods-mobileFrontend.release.xcconfig"; sourceTree = "<group>"; };
 		5A40B422D9184806888CD9D9 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBold.ttf"; path = "../src/assets/fonts/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		5A95BA12641A41D19D287819 /* OpenSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Medium.ttf"; path = "../src/assets/fonts/OpenSans-Medium.ttf"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-mobileFrontend.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobileFrontend.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCE7A84B522434094A014B4 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Light.ttf"; path = "../src/assets/fonts/Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = mobileFrontend/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mobileFrontend/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		B25EA1B6BDC141799222C4CE /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../src/assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		B568E187B08B4594A191EE43 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../src/assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		D1EA48386C6B429897435152 /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../src/assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
+		D81FAA6C1D5C2F7A202815AD /* Pods_mobileFrontend.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobileFrontend.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E12874280B4A4FF4833EB7D3 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../src/assets/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		E7D67E5F0A2E4739B3AF6E56 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../src/assets/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-mobileFrontend.a in Frameworks */,
+				CF6F0B194F79182DB8839F4B /* Pods_mobileFrontend.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-mobileFrontend.a */,
+				D81FAA6C1D5C2F7A202815AD /* Pods_mobileFrontend.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -440,6 +440,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
@@ -513,6 +524,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,

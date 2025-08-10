@@ -14,13 +14,14 @@ import {BlogTypes} from '../../utils/constants';
 const {Montserrat, Lato} = fontOBJ;
 const {height} = Dimensions.get('window');
 const FlatListFilter = ({activeBlog, handleChange}: IFlatListFilter) => {
+
   const renderItem = ({item}: {item: string}) => {
     return (
-      <Pressable onPress={()=>handleChange(item)}>
+      <Pressable onPress={() => handleChange(item)}>
         <Text
           style={[
             styles.itemStyle,
-            item === activeBlog && {backgroundColor: 'black', color: 'white'},
+            item === activeBlog && {backgroundColor: '#2db3fc', color: 'white'},
           ]}>
           {item}
         </Text>
@@ -29,7 +30,7 @@ const FlatListFilter = ({activeBlog, handleChange}: IFlatListFilter) => {
   };
   return (
     <View style={styles.parentComponent}>
-      <Text style={styles.heading}>Recent Blogs</Text>
+      <Text style={styles.heading}>From Around the Web</Text>
       <View>
         <FlatList
           showsHorizontalScrollIndicator={false}
@@ -37,6 +38,7 @@ const FlatListFilter = ({activeBlog, handleChange}: IFlatListFilter) => {
           horizontal
           data={BlogTypes}
           renderItem={renderItem}
+          keyExtractor={(item,index)=>item+" "+index}
         />
       </View>
     </View>
@@ -47,12 +49,12 @@ export default FlatListFilter;
 
 const styles = StyleSheet.create({
   parentComponent: {
-    paddingHorizontal: 14,
+    paddingHorizontal: 16,
     gap: 14,
   },
   heading: {
-    fontFamily: Lato.bold,
-    fontSize: height * 0.022,
+    fontFamily: Montserrat.bold,
+    fontSize: height * 0.02,
   },
   flatListStyle: {
     gap: 10,
@@ -60,10 +62,11 @@ const styles = StyleSheet.create({
   itemStyle: {
     paddingVertical: 5,
     paddingHorizontal: 14,
-    borderRadius: 18,
+    borderRadius: 10,
     fontFamily: Montserrat.medium,
     color: 'black',
     backgroundColor: '#eeeeef',
     borderWidth: 0.1,
+    elevation: 1
   },
 });
