@@ -15,7 +15,7 @@ const Home = () => {
 
   const renderItem = ({item}: any) => {
     return (
-      <View style={{paddingHorizontal: 14, paddingVertical: 20}}>
+      <View style={{paddingHorizontal: 14}}>
         <BlogCard />
       </View>
     );

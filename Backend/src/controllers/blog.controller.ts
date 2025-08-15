@@ -72,17 +72,20 @@ export const blogLiked = async (req: Request, res: Response) => {
     const { userId, blogId } = req.body;
 
     if (!userId || !blogId) {
-      return res.status(400).json({ message: "Missing userId or blogId" });
+      res.status(400).json({ message: "Missing userId or blogId" });
+      return;
     }
 
     const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({ message: "User doesn't exist" });
+      res.status(404).json({ message: "User doesn't exist" });
+      return;
     }
 
     const blog = await BlogModel.findById(blogId);
     if (!blog) {
-      return res.status(404).json({ message: "Blog not found" });
+      res.status(404).json({ message: "Blog not found" });
+      return;
     }
 
     const existingLike = await LikesModel.findOne({ blogId, userId });
@@ -92,7 +95,8 @@ export const blogLiked = async (req: Request, res: Response) => {
       await BlogModel.findByIdAndUpdate(blogId, { $inc: { likesCount: -1 } });
       await NotificationModel.deleteOne({ blogID: blogId, userID: userId });
 
-      return res.status(200).json({ message: "Blog unliked" });
+      res.status(200).json({ message: "Blog unliked" });
+      return;
     }
 
     await LikesModel.create({ blogId, userId });
@@ -104,7 +108,7 @@ export const blogLiked = async (req: Request, res: Response) => {
     res.status(200).json({ message: "Like added successfully" });
   } catch (e) {
     console.error("@error at blog like endpoint", e);
-    return res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
 

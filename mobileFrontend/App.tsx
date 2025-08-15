@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 import {SafeAreaProvider, SafeAreaView} from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native';
 import Toast from 'react-native-toast-message';
-import CustomToastConfig from './components/common/CustomToastConfig.tsx';
-import MainStackNavigation from './navigation/MainStackNavigation';
+import CustomToastConfig from './src/components/common/CustomToastConfig.tsx';
+import MainStackNavigation from './src/navigation/MainStackNavigation';
 import {Provider} from 'react-redux';
-import store from './redux/store.ts';
+import store from './src/redux/store.ts';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { GOOGLE_WEB_CLIENT_ID } from '@env';
 

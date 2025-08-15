@@ -10,14 +10,22 @@ import {
 import React from 'react';
 import {DUMMY_DATA} from '../../utils/constants';
 import {fontOBJ} from '../../assets/fonts';
+import { useNavigation } from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('screen');
 const {Montserrat, OpenSans} = fontOBJ;
 
 const FeaturingCard = () => {
+
+  const navigation = useNavigation();
+
+  const handleNavigation = ()=>{
+    navigation.navigate("Blogdetails");
+  }
+
   const renderItem = ({item}: {item: any}) => {
     return (
-      <TouchableOpacity activeOpacity={0.5} style={styles.cardWrapper}>
+      <TouchableOpacity onPress={handleNavigation} activeOpacity={0.5} style={styles.cardWrapper}>
         <Image
           style={styles.image}
           resizeMode="cover"

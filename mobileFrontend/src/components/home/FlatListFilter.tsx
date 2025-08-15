@@ -31,7 +31,7 @@ const FlatListFilter = ({activeBlog, handleChange}: IFlatListFilter) => {
   return (
     <View style={styles.parentComponent}>
       <Text style={styles.heading}>From Around the Web</Text>
-      <View>
+      {/* <View>
         <FlatList
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.flatListStyle}
@@ -40,7 +40,7 @@ const FlatListFilter = ({activeBlog, handleChange}: IFlatListFilter) => {
           renderItem={renderItem}
           keyExtractor={(item,index)=>item+" "+index}
         />
-      </View>
+      </View> */}
     </View>
   );
 };

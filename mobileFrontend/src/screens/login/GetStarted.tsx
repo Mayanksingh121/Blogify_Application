@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     width: '100%',
     gap: 10,
     display: 'flex',
-    position: Platform.OS == 'ios' ? 'absolute' : 'static',
+    position: 'static',
     bottom: Platform.OS == 'ios' ? 0 : null,
     justifyContent: 'space-evenly',
   },

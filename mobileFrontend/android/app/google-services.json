@@ -14,14 +14,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "797817728306-cm3bslk5jvai8ar0h1bahnor073c6u02.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.blogify",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
           "client_id": "797817728306-9tbggdj118hkmjd0lhoo1l6h2hjls19o.apps.googleusercontent.com",
           "client_type": 3
         }

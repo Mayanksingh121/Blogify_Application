@@ -1,48 +1,27 @@
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import {Dimensions, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import imagesOBJ from '../../assets/images';
-import { fontOBJ } from '../../assets/fonts';
+import {fontOBJ} from '../../assets/fonts';
 
-const { height, width } = Dimensions.get('window');
-const { Montserrat, Lato } = fontOBJ;
+const {height, width} = Dimensions.get('screen');
+const {Montserrat, Lato, OpenSans} = fontOBJ;
 
 const BlogCard = () => {
   return (
-    <View style={styles.parentContainer}>
-      <View style={styles.imageContainer}>
-        <Image
-          source={imagesOBJ.maleAvatar}
-          resizeMode="cover"
-          style={styles.coverImage}
-        />
-      </View>
-
-      <View style={styles.bottomContainer}>
-
-        <View style={styles.tagRow}>
-          <View style={styles.tagPill}>
-            <Text style={styles.tagText}>Technology</Text>
-          </View>
-          <View style={styles.tagPill}>
-            <Text style={styles.tagText}>5 min read</Text>
-          </View>
-        </View>
-
-        <Text style={{fontFamily: Lato.bold, fontSize: height * 0.02}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, sint?</Text>
-        <Text numberOfLines={2} style={styles.titleText}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt ipsam, asperiores velit quidem aperiam laudantium corrupti dolorum.
+    <TouchableOpacity activeOpacity={0.8} style={styles.parentContainer}>
+      <View style={{width: width - 200, gap :10}}>
+        <Text numberOfLines={2} style={styles.title}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, labore!</Text>
+        <Text numberOfLines={1} style={styles.author}>
+         By Mayank Singh 
         </Text>
-        
-
-        <View style={styles.authorContainer}>
-          <Image style={styles.avatar} source={imagesOBJ.maleAvatar} />
-          <View style={styles.authorTextContainer}>
-            <Text style={styles.authorName}>Mayank Singh</Text>
-            <Text style={styles.timestamp}>Author · Monday · 2:12 PM</Text>
-          </View>
-        </View>
       </View>
-    </View>
+      <Image
+        style={styles.image}
+        resizeMode="cover"
+        source={{
+          uri: 'https://justenergy.com/wp-content/uploads/2016/10/Winter-preparation-home-house-image.jpg',
+        }}
+      />
+    </TouchableOpacity>
   );
 };
 
@@ -50,68 +29,28 @@ export default BlogCard;
 
 const styles = StyleSheet.create({
   parentContainer: {
-    height: height * 0.38,
-    width: '100%',
-    backgroundColor: '#fff',
-    overflow: 'hidden',
-    elevation: 1,
-  },
-  imageContainer: {
-    height: '50%',
-    width: '100%',
-  },
-  coverImage: {
-    height: '100%',
-    width: '100%',
-  },
-  bottomContainer: {
-    padding: 14,
-    gap: 12,
-  },
-  tagRow: {
+    paddingHorizontal: 18,
     flexDirection: 'row',
-    gap: 10,
-  },
-  tagPill: {
-    backgroundColor: '#f0f0f0',
-    borderRadius: 20,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-  },
-  tagText: {
-    fontSize: height * 0.014,
-    fontFamily: Lato.bold,
-    color: '#333',
-  },
-  titleText: {
-    fontFamily: Lato.regular,
-    fontSize: height * 0.017,
-    color: '#1c1c1e',
-    lineHeight: height * 0.025,
-  },
-  authorContainer: {
-    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    gap: 10,
+    borderBottomColor: '#e3e3e3',
+    borderBottomWidth: 0.4,
+    paddingVertical: 15
   },
-  avatar: {
-    height: height * 0.05,
-    width: height * 0.05,
-    borderRadius: height * 0.025,
-    borderWidth: 0.3,
-    borderColor: '#ccc',
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 10
   },
-  authorTextContainer: {
-    flex: 1,
+  title: {
+    fontFamily: OpenSans.semiBold,
+    fontSize: height * 0.017,
   },
-  authorName: {
-    fontFamily: Montserrat.bold,
-    fontSize: height * 0.015,
-    color: '#353935',
-  },
-  timestamp: {
-    fontFamily: Lato.regular,
+  author: {
+    color: '#5ec5fd',
+    fontFamily: Montserrat.medium,
     fontSize: height * 0.013,
-    color: '#a0a0a0',
-  },
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });

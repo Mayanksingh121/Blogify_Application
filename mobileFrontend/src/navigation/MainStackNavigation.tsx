@@ -32,14 +32,14 @@ const MainStackNavigation = () => {
 
   return (
     <MainNavigationStack.Navigator screenOptions={{headerShown:false}}>
-        {/* {!isUserLoggedIn ? <MainNavigationStack.Screen
+        {!isUserLoggedIn ? <MainNavigationStack.Screen
           name="LoginStack"
           component={LoginNavigationStack}
-        />:  */}
+        />: 
        <MainNavigationStack.Screen
          name="HomeStack"
          component={BottomTabNavigation}
-       />
+        />}
     </MainNavigationStack.Navigator>
   );
 };

@@ -1,9 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {fontOBJ} from '../../assets/fonts';
 import LinearGradient from 'react-native-linear-gradient';
@@ -19,37 +14,29 @@ const QuizCard = () => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 1}}
         style={styles.parentContainer}>
-        
         <View style={styles.backgroundPattern}>
           <View style={styles.circle1} />
           <View style={styles.circle2} />
           <View style={styles.circle3} />
           <View style={styles.decorativeLine} />
         </View>
-        
+
         <View style={styles.innerContainer}>
-          <View style={styles.contentSection}>
-            <View style={styles.iconContainer}>
-              <Icon name="bulb-outline" size={24} color="#ffffff" />
+          <View style={styles.nestedContainer}>
+            <View style={styles.contentSection}>
+              <View style={styles.textContainer}>
+                <Text style={styles.heading}>Blog Quiz</Text>
+                <Text style={styles.subHeading}>
+                  Discover personalized blog recommendations
+                </Text>
+              </View>
             </View>
-            <View style={styles.textContainer}>
-              <Text style={styles.heading}>Blog Quiz</Text>
-              <Text style={styles.subHeading}>
-                Discover personalized blog recommendations
-              </Text>
-            </View>
+
+            <TouchableOpacity activeOpacity={0.8} style={styles.buttonWrapper}>
+                <Text style={styles.buttonText}>Start Quiz</Text>
+                <Icon name="arrow-forward" size={16} color="#1f1f1f" />
+            </TouchableOpacity>
           </View>
-          
-          <TouchableOpacity activeOpacity={0.8} style={styles.buttonWrapper}>
-            <LinearGradient
-              colors={['#ffffff', '#f8f8f8']}
-              start={{x: 0, y: 0}}
-              end={{x: 0, y: 1}}
-              style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Start Quiz</Text>
-              <Icon name="arrow-forward" size={16} color="#1f1f1f" />
-            </LinearGradient>
-          </TouchableOpacity>
         </View>
       </LinearGradient>
     </View>
@@ -121,24 +108,15 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     paddingVertical: 12,
-    paddingHorizontal: 12,
+    paddingHorizontal: 16,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    gap: 10,
   },
   contentSection: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingRight: 16,
-  },
-  iconContainer: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
-    borderRadius: 20,
-    padding: 16,
-    marginRight: 16,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.15)',
   },
   textContainer: {
     flex: 1,
@@ -161,24 +139,31 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     borderRadius: 28,
     elevation: 4,
+    overflow: 'hidden',
     shadowColor: '#000000',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     shadowRadius: 6,
-  },
-  buttonContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 16,
-    borderRadius: 28,
     minWidth: 120,
     justifyContent: 'center',
+    backgroundColor: 'white'
   },
   buttonText: {
     fontFamily: Montserrat.bold,
     color: '#1f1f1f',
     fontSize: 14,
     marginRight: 8,
-  }
+  },
+  nestedContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingHorizontal: 10,
+    gap: 10,
+  },
 });
