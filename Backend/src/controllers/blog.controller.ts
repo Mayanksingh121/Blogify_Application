@@ -100,9 +100,16 @@ export const blogLiked = async (req: Request, res: Response) => {
     }
 
     await LikesModel.create({ blogId, userId });
-    const likedBlogData = await BlogModel.findByIdAndUpdate(blogId, { $inc: { likesCount: 1 } });
+    const likedBlogData = await BlogModel.findByIdAndUpdate(blogId, {
+      $inc: { likesCount: 1 },
+    });
     const message = `${user.name} liked your blog ${likedBlogData?.title}`;
-    const notification = new NotificationService(message, userId, blog.author, blogId);
+    const notification = new NotificationService(
+      message,
+      userId,
+      blog.author,
+      blogId
+    );
     await notification.storeNotificationInDb();
 
     res.status(200).json({ message: "Like added successfully" });
@@ -148,5 +155,27 @@ export const getUserStatistics = async (req: Request, res: Response) => {
   } catch (e) {
     console.log("@error while getting user blogInformation");
     res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const getUserSearchedBlog = async (req: Request, res: Response) => {
+  try {
+    const { userInput } = req.query;
+    const reqBlogs = await BlogModel.find({
+      $or: [
+        {
+          title: { $regex: userInput, $options: 'i' },
+        },
+        {
+          category: {$regex: userInput, $options: 'i'},
+        },
+      ],
+    }).limit(10).select("title category _id")
+
+    res.json({
+      searchResults: reqBlogs
+    })
+  } catch (e) {
+    console.log("@error while getting the ");
   }
 };
