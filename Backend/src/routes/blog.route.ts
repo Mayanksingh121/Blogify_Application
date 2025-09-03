@@ -9,6 +9,7 @@ blogRouter.get("get-all-blogs",verifySessionToken,getBlogsList);
 blogRouter.post("/like",verifySessionToken,blogLiked);
 blogRouter.post("/view",verifySessionToken,blogViewed);
 blogRouter.get("/get-stats", verifySessionToken,getUserStatistics);
+blogRouter.get("/get", )
 
 
 

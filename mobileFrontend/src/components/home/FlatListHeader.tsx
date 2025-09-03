@@ -5,48 +5,65 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import Icon from '@react-native-vector-icons/ionicons';
 import FeaturingCard from './FeaturingCard';
 import {fontOBJ} from '../../assets/fonts';
 import QuizCard from './QuizCard';
 import PopularTags from './PopularTags';
+import SearchModal from './SearchModal';
 
 const {Montserrat, Lato} = fontOBJ;
 const {height, width} = Dimensions.get('screen');
 
 const FlatListHeader = () => {
+  const [searchModalVisible, setSearchModalVisible] = useState<boolean>(false);
+  const [modalType, setModalType] = useState<string>("");
+
+
+  const handleModal = (modalVisibility: boolean, modalType: string)=>{
+    setSearchModalVisible(modalVisibility);
+    setModalType(modalType);
+  }
+
   return (
-    <View style={styles.parentContainer}>
-      <View style={styles.headerContainer}>
-        <TouchableOpacity style={styles.inputBoxContainer}>
-          <Icon name="search" size={20} color="#64748b" />
-          <Text style={styles.textInput}>Search articles, topics...</Text>
-          <Icon name="options" size={18} color="#0ea5e9" />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.popularTagsContainer}>
-        <View style={styles.popularTagsHeader}>
-          <Text style={styles.popularTagText}>Popular Tags</Text>
-          <TouchableOpacity>
-            <Text style={styles.viewAllText}>View All</Text>
+    <>
+      <SearchModal
+        searchModalVisible={searchModalVisible}
+        handleModal = {handleModal}
+        modalType={modalType}
+      />
+      <View style={styles.parentContainer}>
+        <View style={styles.headerContainer}>
+          <TouchableOpacity onPress={()=>handleModal(true, "searchModal")}
+            style={styles.inputBoxContainer}>
+            <Icon name="search" size={20} color="#64748b" />
+            <Text style={styles.textInput}>Search articles, topics...</Text>
+            <Icon name="options" size={18} color="#0ea5e9" />
           </TouchableOpacity>
         </View>
-        <View style={styles.tagsContainer}>
-          <PopularTags tag="#socialmedia" />
-          <PopularTags tag="#cricket" />
-          <PopularTags tag="#artificalintelligence" />
-          <PopularTags tag="#technology" />
-          <PopularTags tag="#marketing" />
-          <PopularTags tag="#sales" />
-          <PopularTags tag="#operations" />
-          <PopularTags tag="#nature" />
+        <View style={styles.popularTagsContainer}>
+          <View style={styles.popularTagsHeader}>
+            <Text style={styles.popularTagText}>Popular Tags</Text>
+            <TouchableOpacity>
+              <Text style={styles.viewAllText}>View All</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.tagsContainer}>
+            <PopularTags tag="#socialmedia" />
+            <PopularTags tag="#cricket" />
+            <PopularTags tag="#artificalintelligence" />
+            <PopularTags tag="#technology" />
+            <PopularTags tag="#marketing" />
+            <PopularTags tag="#sales" />
+            <PopularTags tag="#operations" />
+            <PopularTags tag="#nature" />
+          </View>
         </View>
-      </View>
-      <View style={styles.featureContainer}>
-        <FeaturingCard />
-      </View>
-      {/* <View style={styles.benefitsSection}>
+        <View style={styles.featureContainer}>
+          <FeaturingCard />
+        </View>
+        {/* <View style={styles.benefitsSection}>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Why Choose Blogify?</Text>
           <Text style={styles.sectionSubtitle}>
@@ -59,8 +76,9 @@ const FlatListHeader = () => {
           })}
         </View>
       </View> */}
-      <QuizCard />
-    </View>
+        <QuizCard handleModal = {handleModal}/>
+      </View>
+    </>
   );
 };
 

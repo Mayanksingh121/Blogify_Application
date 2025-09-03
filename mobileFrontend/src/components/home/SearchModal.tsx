@@ -1,14 +1,130 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {
+  FlatList,
+  Image,
+  Modal,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import Ionicons from '@react-native-vector-icons/ionicons';
+import {fontOBJ} from '../../assets/fonts';
+import {fetchUserSearch} from '../../services/homeScreensApis';
+import imagesOBJ from '../../assets/images';
 
-const SearchModal = () => {
+const {Montserrat} = fontOBJ;
+
+const SearchModal = ({
+  searchModalVisible,
+  handleModal,
+  modalType,
+}: {
+  searchModalVisible: boolean;
+  handleModal: (visible: boolean, type: string) => void;
+  modalType: string;
+}) => {
+  const [searchText, setSearchText] = useState<string>('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    if (!searchText) {
+      return;
+    }
+
+    const controller = new AbortController();
+    const signal = controller.signal;
+    const timeoutValue = setTimeout(() => {
+      fetchSearchResults(signal);
+    }, 300);
+
+    return () => {
+      clearTimeout(timeoutValue);
+      controller.abort();
+    };
+  }, [searchText]);
+
+  const fetchSearchResults = async (signal: AbortSignal) => {
+    const results = await fetchUserSearch(searchText, signal);
+    if (results) {
+      setSearchResults(results);
+    }
+  };
+
+  const renderItem = ({item}: any) => {
+    return (
+      <TouchableOpacity>
+        <Text numberOfLines={1}>{item.title}</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  const EmptyComponent = () => {
+    return (
+      <View style={{flex: 1}}>
+        <Image
+          style={{width: 100, height: 300}}
+          resizeMode="contain"
+          source={imagesOBJ?.noResults}
+        />
+      </View>
+    );
+  };
+
   return (
-    <View>
-      <Text>SearchModal</Text>
-    </View>
-  )
-}
+    <Modal visible={searchModalVisible} animationType="slide">
+      {modalType == 'searchModal' ? (
+        <View style={styles.scrollView}>
+          <View style={styles.inputBoxContainer}>
+            <Ionicons name="search" size={20} color="#64748b" />
+            <TextInput
+              onChangeText={text => setSearchText(text)}
+              placeholderTextColor="#64748b"
+              placeholder="Search articles, topics..."
+              style={styles.textInput}
+            />
+            <TouchableOpacity onPress={() => handleModal(false, '')}>
+              <Ionicons name="options" size={18} color="#0ea5e9" />
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            ListEmptyComponent={EmptyComponent}
+            data={searchResults}
+            renderItem={renderItem}
+          />
+        </View>
+      ) : (
+        <View></View>
+      )}
+    </Modal>
+  );
+};
 
-export default SearchModal
+export default SearchModal;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  scrollView: {
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+  },
+  inputBoxContainer: {
+    backgroundColor: '#f8fafc',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 5,
+    borderRadius: 12,
+    gap: 12,
+    borderWidth: 0.5,
+    borderColor: '#e2e8f0',
+    justifyContent: 'center',
+  },
+  textInput: {
+    flex: 1,
+    fontFamily: Montserrat.medium,
+    color: '#64748b',
+    fontSize: 15,
+  },
+});

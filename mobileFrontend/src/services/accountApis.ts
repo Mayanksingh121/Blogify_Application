@@ -4,6 +4,7 @@ import {Platform} from 'react-native';
 
 const backendURL =
   Platform.OS === 'ios' ? BACKEND_HOST_FOR_IOS : BACKEND_HOST_FOR_ANDROID;
+  
 export const signupWithEmail = async (emailID: string) => {
   try {
     const response = await axios.post(`${backendURL}auth/signup`, {

@@ -15,12 +15,12 @@ export const establishWebSocketConnection = (server: Server)=>{
             ws.on('message', (data: string)=>{
                 const parsedData = JSON.parse(data);
 
-                if(parsedData && parsedData?.type == "auth" &&process.env.JWT_SECRET_KEY){
+                if(parsedData && parsedData?.type == "auth" && process.env.JWT_SECRET_KEY){
                     const verifiedToken : any = jwt.verify(parsedData?.token, process.env.JWT_SECRET_KEY);
                     const userId = verifiedToken?.userID;
 
                     if(userId){
-                        userSocketMap.set(userId, ws);
+                      userSocketMap.set(userId, ws);
                     }
                 }else{
                     throw new Error("Jwt Secret not found");

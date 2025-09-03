@@ -12,7 +12,8 @@ const imagesOBJ = {
     prohibited: require("./images/prohibited.png"),
     protection: require("./images/protection.png"),
     lock: require("./images/lock.png"),
-    thunder: require("./images/thunder.png")
+    thunder: require("./images/thunder.png"),
+    noResults: require("./images/noResults.gif")
 }
 
 

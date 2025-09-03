@@ -6,7 +6,7 @@ import Icon from '@react-native-vector-icons/ionicons';
 
 const {Montserrat} = fontOBJ;
 
-const QuizCard = () => {
+const QuizCard = ({handleModal}: {handleModal:(value: boolean, type: string)=>void}) => {
   return (
     <View style={styles.wrapper}>
       <LinearGradient
@@ -32,7 +32,7 @@ const QuizCard = () => {
               </View>
             </View>
 
-            <TouchableOpacity activeOpacity={0.8} style={styles.buttonWrapper}>
+            <TouchableOpacity onPress={()=>handleModal(true, "quizModal")} activeOpacity={0.8} style={styles.buttonWrapper}>
                 <Text style={styles.buttonText}>Start Quiz</Text>
                 <Icon name="arrow-forward" size={16} color="#1f1f1f" />
             </TouchableOpacity>
