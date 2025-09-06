@@ -120,3 +120,55 @@ export const AboutCardData: IAboutCardItem[] = [
 export const BlogTypes = [
   "All", "Sports", "Short Reads", "Technology", "Nature"
 ]
+
+
+export const blogTypes = ['Lifestyle', 'Tech', 'Travel', 'Self-Improvement'];
+
+export const QuizQuestion = [
+  {
+    question: "What kind of content do you find yourself reading most often online?",
+    options: [
+      "Home & Style",
+      "Tech Reviews",
+      "Travel Guides",
+      "Self-Help Tips"
+    ]
+  },
+  {
+    question: "If you had an hour of free time, what would you most likely do?",
+    options: [
+      "Watch Vlogs",
+      "Try Software",
+      "Plan Travel",
+      "Read & Journal"
+    ]
+  },
+  {
+    question: "What type of social media content do you engage with the most?",
+    options: [
+      "Style & Food",
+      "Tech Demos",
+      "Travel Reels",
+      "Life Advice"
+    ]
+  },
+  {
+    question: "Which of these best describes your ideal weekend?",
+    options: [
+      "Brunch & Decor",
+      "Code & Games",
+      "Road Trips",
+      "Goal Setting"
+    ]
+  },
+  {
+    question: "What kind of blogs do you usually bookmark or save?",
+    options: [
+      "DIY & Tips",
+      "Tech News",
+      "Travel Hacks",
+      "Time Management"
+    ]
+  }
+];
+

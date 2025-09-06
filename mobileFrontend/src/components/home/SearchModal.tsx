@@ -14,6 +14,8 @@ import Ionicons from '@react-native-vector-icons/ionicons';
 import {fontOBJ} from '../../assets/fonts';
 import {fetchUserSearch} from '../../services/homeScreensApis';
 import imagesOBJ from '../../assets/images';
+import CustomBackButton from '../common/CustomBackButton';
+import QuizContainer from './QuizContainer';
 
 const {Montserrat} = fontOBJ;
 
@@ -74,7 +76,7 @@ const SearchModal = ({
   };
 
   return (
-    <Modal visible={searchModalVisible} animationType="slide">
+    <Modal visible={searchModalVisible} animationType="fade">
       {modalType == 'searchModal' ? (
         <View style={styles.scrollView}>
           <View style={styles.inputBoxContainer}>
@@ -86,7 +88,7 @@ const SearchModal = ({
               style={styles.textInput}
             />
             <TouchableOpacity onPress={() => handleModal(false, '')}>
-              <Ionicons name="options" size={18} color="#0ea5e9" />
+              <Text style={styles.closeModalText}>Close</Text>
             </TouchableOpacity>
           </View>
           <FlatList
@@ -96,7 +98,17 @@ const SearchModal = ({
           />
         </View>
       ) : (
-        <View></View>
+        <View style={styles.scrollView}>
+          <View>
+            <CustomBackButton
+              handleBackPress={() => handleModal(false, '')}
+              buttonData={{
+                buttonText: 'Quiz for you',
+              }}
+            />
+          </View>
+          <QuizContainer/>
+        </View>
       )}
     </Modal>
   );
@@ -114,9 +126,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
-    paddingVertical: 5,
+    paddingVertical: 2,
     borderRadius: 12,
-    gap: 12,
+    gap: 9,
     borderWidth: 0.5,
     borderColor: '#e2e8f0',
     justifyContent: 'center',
@@ -126,5 +138,9 @@ const styles = StyleSheet.create({
     fontFamily: Montserrat.medium,
     color: '#64748b',
     fontSize: 15,
+  },
+  closeModalText: {
+    fontFamily: Montserrat.bold,
+    color: '#0ea5e9',
   },
 });
