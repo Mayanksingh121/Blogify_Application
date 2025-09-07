@@ -6,6 +6,8 @@ import { NotificationModel } from "../db/models/notifications.model";
 import { NotificationService } from "../services/notification";
 import { User } from "../db/models/user.model";
 import { uploadOnCloudnary } from "../services/config";
+import fs from "fs";
+import mongoose from "mongoose";
 
 export const trendingBlog = async (req: Request, res: Response) => {
   try {
@@ -182,19 +184,53 @@ export const getUserSearchedBlog = async (req: Request, res: Response) => {
 };
 
 
-export const addBlog = async (req:Request, res:Response)=>{
+export const addBlog = async (req:any, res:Response)=>{
   try{
     if (!req.file) {
       res.status(400).json({ error: "No file uploaded" });
       return;
     };
+
+
+    const {title,category, content}: {
+      title: string,
+      category: string,
+      content: string,
+    } =  req.body;
+
+    const userId:mongoose.Schema.Types.ObjectId =  req.userId;
+
+    if(!title || !category || !content || content?.trim()?.length<300 || !userId){
+      fs.unlinkSync(req?.file?.path);
+      res.status(400).json({message: "All Field are mandatory"});
+      return;
+    }
+
+    const userExist = await User.findOne({
+      _id: userId
+    })
+
+    if(!userExist){
+      fs.unlinkSync(req?.file?.path);
+      res.status(401).json({message: "User Doesn't Exist"});
+      return;
+    }
+
     const responseFromCDN = await uploadOnCloudnary(req.file.path);
 
     if(!responseFromCDN){
       throw new Error("Can't Upload to cdn")
     }
-    
-    res.status(200).json({message: "blog added successfully"});
+
+    await BlogModel.create({
+      title,
+      category,
+      content,
+      images: [responseFromCDN?.url],
+      author: userId
+    })
+
+    res.status(200).json({message: "Blog added successfully", url: responseFromCDN?.url});
   }catch(e){
     console.log("@error while adding the blog ",e);
     res.status(500).json({message: "Internal Server Error"});

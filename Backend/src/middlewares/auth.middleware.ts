@@ -9,7 +9,6 @@ export const verifyTempToken = async (
 ): Promise<void>=> {
   try {
     const token : any = req.headers.authorization;
-    console.log(req.headers);
     if (!process.env.JWT_SECRET_KEY) {
       res.status(500).json({message : "Internal server error"});
       return;
@@ -44,9 +43,9 @@ export const verifyTempToken = async (
   }
 };
 
-export const verifySessionToken = async(req:Request, res:Response, next: NextFunction)=>{
+export const verifySessionToken = async(req:any, res:Response, next: NextFunction)=>{
   try{
-    const token : any= req.headers.Authorization;
+    const token : any= req.headers.authorization;
 
     if(!token){
       res.status(401).json({message: "unauthorized user"});
@@ -74,8 +73,14 @@ export const verifySessionToken = async(req:Request, res:Response, next: NextFun
 
     const userEmailID = decodedToken?.email;
     const userID = decodedToken?._id;
-    req.body.emailID = userEmailID;
-    req.body.userId = userID;
+
+    if(req.body){
+      req.body.emailID = userEmailID;
+      req.body.userId = userID;
+    }else{
+      req.userId = userID;;
+    }
+    
     next();
   }catch(e){
     console.log("Error in jwt verification");

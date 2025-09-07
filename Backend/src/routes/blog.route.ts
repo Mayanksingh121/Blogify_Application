@@ -11,7 +11,7 @@ blogRouter.post("/like",verifySessionToken,blogLiked);
 blogRouter.post("/view",verifySessionToken,blogViewed);
 blogRouter.get("/get-stats", verifySessionToken,getUserStatistics);
 blogRouter.get("/autoSuggest",verifySessionToken,getUserSearchedBlog)
-blogRouter.post("/addBlog", upload.single("image"), addBlog)
+blogRouter.post("/addBlog",verifySessionToken,upload.single("image") ,addBlog)
 
 
 

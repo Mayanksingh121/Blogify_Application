@@ -8,7 +8,7 @@ dotenv.config();
 const storage = multer.diskStorage({
   destination: "./uploads/",
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + "-" + Date.now());
+    cb(null, file.originalname + "-" + Date.now());
   },
 });
 
@@ -29,7 +29,7 @@ export const uploadOnCloudnary = async (localFilPath: string) => {
     const resposneFromCDN = await cloudinary.uploader.upload(localFilPath, {
       resource_type: 'image'
     });
-    // fs.unlinkSync(localFilPath);
+    fs.unlinkSync(localFilPath);
     return resposneFromCDN;
   } catch (e) {
     fs.unlinkSync(localFilPath);

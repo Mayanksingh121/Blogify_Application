@@ -166,9 +166,8 @@ export const googleLoginController = async (req: Request, res: Response) => {
       res.status(500).json({ message: "Internal Server Error" });
       return;
     }
-    const userToken = jwt.sign({ email: email }, process.env.JWT_SECRET_KEY);
 
-    await User.findOneAndUpdate(
+    const user = await User.findOneAndUpdate(
       {
         email,
       },
@@ -182,6 +181,9 @@ export const googleLoginController = async (req: Request, res: Response) => {
         new: true,
       }
     );
+
+
+    const userToken = jwt.sign({ email: email, _id: user?._id }, process.env.JWT_SECRET_KEY);
 
     res
       .status(200)

@@ -1,4 +1,4 @@
-import express from "express";
+import express, { urlencoded } from "express";
 import dotenv from "dotenv";
 import mainRouter from "./routes/main.route";
 import { dbConnect } from "./db/dbConnection";
@@ -17,6 +17,7 @@ const startServer = async()=>{
         await dbConnect();
         await connectRedis();
         app.use(express.json());
+        app.use(urlencoded({extended: true}));
         app.use("/apiv1",mainRouter);
         app.listen(process.env.PORT, ()=>{
             console.log("Server is listing on port ", process.env.PORT);

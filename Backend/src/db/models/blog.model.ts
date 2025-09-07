@@ -29,10 +29,12 @@ const blogSchema = new mongoose.Schema<IBlog>(
     views: {
       type: Number,
       required: false,
+      default: 0,
     },
     likesCount: {
       type: Number,
       required: false,
+      default: 0
     },
   },
   {
