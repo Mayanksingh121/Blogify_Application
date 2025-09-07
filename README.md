@@ -29,7 +29,7 @@ This repository contains a full-stack mobile application built with **React Nati
 
 ### Backend (Server)
 - **Node.js + Express** (API & WebSocket server)  
-- **Socket.IO / WS** (real-time communication)  
+- **WS** (real-time communication)  
 - **MongoDB + Mongoose** (database and ORM)  
 - **JWT Authentication** (email/password)  
 - **Google OAuth 2.0** (social login)  
