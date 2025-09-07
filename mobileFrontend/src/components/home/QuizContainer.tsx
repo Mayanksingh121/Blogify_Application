@@ -5,8 +5,10 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Animated,
+  useAnimatedValue,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {QuizQuestion} from '../../utils/constants';
 import {fontOBJ} from '../../assets/fonts';
 
@@ -16,6 +18,11 @@ const {height, width} = Dimensions.get('screen');
 const QuizContainer = () => {
   const [questionNum, setQuestionNum] = useState<number>(0);
   const [answersSelected, setAnswersSelected] = useState([]);
+  const activePosition = useAnimatedValue(0);
+
+  useEffect(() => {
+    activePosition.setValue(width - 32);
+  }, []);
 
   const handleButtonClick = (type: 'previous' | 'next') => {
     if (type === 'previous') {
@@ -29,10 +36,14 @@ const QuizContainer = () => {
   };
 
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={styles.parent}>
-      <View style={styles.progressTab}></View>
+    <View style={{flex: 1}}>
+      <View style={styles.progressBarContainer}>
+        <View style={styles.innerContainer}>
+          <Text style={styles.progressText}>Question {questionNum+1} of 5</Text>
+          <Text style={styles.progressText}>10%</Text>
+        </View>
+        <Animated.View style={[styles.progressTab]}></Animated.View>
+      </View>
       <View style={[styles.questionContainer]}>
         <Text style={styles.questionStyle}>{questionNum + 1}.</Text>
         <Text style={styles.questionStyle}>
@@ -68,15 +79,23 @@ const QuizContainer = () => {
           </Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
-
 export default QuizContainer;
 
 const styles = StyleSheet.create({
-  parent: {
-    paddingVertical: 30,
+  progressBarContainer: {
+    backgroundColor: 'white',
+    height: height * 0.06,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f1f4f5',
+    paddingHorizontal: 16
+  },
+  innerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 4
   },
   progressTab: {
     height: 10,
@@ -84,10 +103,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     overflow: 'hidden',
   },
+  progressText: {
+    fontFamily: Montserrat.semiBold
+  },
   questionContainer: {
     flexDirection: 'row',
     gap: 3,
-    marginVertical: height * 0.04,
+    marginVertical: height * 0.03,
+    paddingHorizontal: 16
   },
   questionStyle: {
     fontFamily: Montserrat.bold,
@@ -95,6 +118,7 @@ const styles = StyleSheet.create({
   },
   container: {
     gap: 20,
+    paddingHorizontal: 16
   },
   optionContainer: {
     flexDirection: 'row',
@@ -115,6 +139,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     justifyContent: 'flex-end',
     gap: 10,
+    paddingHorizontal: 16
   },
   button: {
     backgroundColor: '#2591d1',

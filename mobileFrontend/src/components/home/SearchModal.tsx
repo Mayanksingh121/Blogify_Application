@@ -99,7 +99,7 @@ const SearchModal = ({
         </View>
       ) : (
         <View style={styles.scrollView}>
-          <View>
+          <View style={styles.backButtonContainer}>
             <CustomBackButton
               handleBackPress={() => handleModal(false, '')}
               buttonData={{
@@ -118,8 +118,8 @@ export default SearchModal;
 
 const styles = StyleSheet.create({
   scrollView: {
-    paddingVertical: 20,
-    paddingHorizontal: 16,
+    backgroundColor: '#fafbfd',
+    flex: 1
   },
   inputBoxContainer: {
     backgroundColor: '#f8fafc',
@@ -143,4 +143,9 @@ const styles = StyleSheet.create({
     fontFamily: Montserrat.bold,
     color: '#0ea5e9',
   },
+  backButtonContainer: {
+    backgroundColor: '#ffffff',
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+  }
 });

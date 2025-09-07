@@ -82,3 +82,12 @@ export const verifySessionToken = async(req:Request, res:Response, next: NextFun
     res.status(500).json({message: "Internal Server error"});
   }
 }
+
+
+export const addImageToCDN = async(req:Request, res:Response, next:NextFunction)=>{
+  try{
+    
+  }catch(e){
+    res.status(500).json({message: "Internal Server Error ",e});
+  }
+}

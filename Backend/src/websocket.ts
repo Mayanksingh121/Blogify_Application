@@ -59,4 +59,3 @@ export const sendNotificationToUser = async(userId: string, blogId: string, mess
         console.log("@error while sending the notification to the author ", e);
     }
 }
-

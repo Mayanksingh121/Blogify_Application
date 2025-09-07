@@ -5,6 +5,7 @@ import { LikesModel } from "../db/models/likes.model";
 import { NotificationModel } from "../db/models/notifications.model";
 import { NotificationService } from "../services/notification";
 import { User } from "../db/models/user.model";
+import { uploadOnCloudnary } from "../services/config";
 
 export const trendingBlog = async (req: Request, res: Response) => {
   try {
@@ -179,3 +180,23 @@ export const getUserSearchedBlog = async (req: Request, res: Response) => {
     console.log("@error while getting the ");
   }
 };
+
+
+export const addBlog = async (req:Request, res:Response)=>{
+  try{
+    if (!req.file) {
+      res.status(400).json({ error: "No file uploaded" });
+      return;
+    };
+    const responseFromCDN = await uploadOnCloudnary(req.file.path);
+
+    if(!responseFromCDN){
+      throw new Error("Can't Upload to cdn")
+    }
+    
+    res.status(200).json({message: "blog added successfully"});
+  }catch(e){
+    console.log("@error while adding the blog ",e);
+    res.status(500).json({message: "Internal Server Error"});
+  }
+}
