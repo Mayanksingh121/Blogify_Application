@@ -180,6 +180,7 @@ export const getUserSearchedBlog = async (req: Request, res: Response) => {
     })
   } catch (e) {
     console.log("@error while getting the ");
+    res.status(500).json({message: "Internal Server Error"})
   }
 };
 
@@ -221,11 +222,15 @@ export const addBlog = async (req:any, res:Response)=>{
     if(!responseFromCDN){
       throw new Error("Can't Upload to cdn")
     }
+    
+    const trimedTitle = title?.trim();
+    const trimedCategory = category?.trim();
+    const trimedContent = content?.trim();
 
     await BlogModel.create({
-      title,
-      category,
-      content,
+      title: trimedTitle,
+      category: trimedCategory,
+      content: trimedContent,
       images: [responseFromCDN?.url],
       author: userId
     })
