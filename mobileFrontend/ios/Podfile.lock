@@ -2068,7 +2068,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSVG (15.12.1):
+  - RNSVG (15.13.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2091,9 +2091,9 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNSVG/common (= 15.12.1)
+    - RNSVG/common (= 15.13.0)
     - Yoga
-  - RNSVG/common (15.12.1):
+  - RNSVG/common (15.13.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2486,7 +2486,7 @@ SPEC CHECKSUMS:
   RNGoogleSignin: db4aa231a90bdc4cea8b749ec68b168c8f747ec2
   RNReanimated: 77cb290489b14454ed89681ae01c179a5b0b6ac5
   RNScreens: eb3800639b236501d2d6487d930b35fe3db68cb0
-  RNSVG: 680e961f640e381aab730a04b2371969686ed9f7
+  RNSVG: d2bcb09b6a3527f6d37f0f351bc5149c69876263
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 0f6757ba6d7d652f42bba3423f925dbf23d51aab
 
