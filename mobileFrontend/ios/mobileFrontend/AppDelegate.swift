@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       launchOptions: launchOptions
     )
 
+    RNSplashScreen.show()
+
     return true
   }
 }
@@ -46,3 +48,4 @@ class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
 #endif
   }
 }
+

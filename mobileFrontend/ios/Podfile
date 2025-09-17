@@ -17,6 +17,7 @@ end
 target 'mobileFrontend' do
   config = use_native_modules!
   use_frameworks! :linkage => :static
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
   use_react_native!(
     :path => config[:reactNativePath],

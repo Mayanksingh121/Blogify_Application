@@ -2,7 +2,6 @@ import {
   FlatList,
   Image,
   Modal,
-  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -12,12 +11,13 @@ import {
 import React, {useEffect, useState} from 'react';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import {fontOBJ} from '../../assets/fonts';
-import {fetchUserSearch} from '../../services/homeScreensApis';
+import { fetchUserSearch } from '../../services/homeScreensApis';
 import imagesOBJ from '../../assets/images';
 import CustomBackButton from '../common/CustomBackButton';
 import QuizContainer from './QuizContainer';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-const {Montserrat} = fontOBJ;
+const { Montserrat } = fontOBJ;
 
 const SearchModal = ({
   searchModalVisible,
@@ -78,7 +78,7 @@ const SearchModal = ({
   return (
     <Modal visible={searchModalVisible} animationType="fade">
       {modalType == 'searchModal' ? (
-        <View style={styles.scrollView}>
+        <SafeAreaView style={styles.scrollView}>
           <View style={styles.inputBoxContainer}>
             <Ionicons name="search" size={20} color="#64748b" />
             <TextInput
@@ -96,7 +96,7 @@ const SearchModal = ({
             data={searchResults}
             renderItem={renderItem}
           />
-        </View>
+        </SafeAreaView>
       ) : (
         <View style={styles.scrollView}>
           <View style={styles.backButtonContainer}>
